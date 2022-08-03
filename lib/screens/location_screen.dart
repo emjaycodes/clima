@@ -20,7 +20,6 @@ class _LocationScreenState extends State<LocationScreen> {
   String weatherIcon = '' ;
   String cityName = '';
   String weatherMessage = '';
-
   @override
   void initState() {
     super.initState();
@@ -30,6 +29,7 @@ class _LocationScreenState extends State<LocationScreen> {
 
 
   void updateUI(dynamic weatherData){
+
     setState(() {
       if (weatherData == null){
         temperature = 0;
@@ -47,9 +47,6 @@ class _LocationScreenState extends State<LocationScreen> {
   });
     
   
-  
-
-  print(temperature);
 
   }
   Widget build(BuildContext context) {
@@ -79,7 +76,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     },
                     child: const Icon(
                       Icons.near_me,
-                      size: 50.0,
+                      size: 30.0,
                     ),
                   ),
                   ElevatedButton(
@@ -88,13 +85,14 @@ class _LocationScreenState extends State<LocationScreen> {
                         context,
                         MaterialPageRoute(builder: (context) => CityScreen()));
                     if (typedName != null) {
-                      
+                      var weatherData = await weather.getCityWeather(typedName);
+                      updateUI(weatherData);
                     }
                     },
 
                     child: const Icon(
                       Icons.location_city,
-                      size: 50.0,
+                      size: 30.0,
                     ),
                   ),
                 ],

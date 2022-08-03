@@ -27,10 +27,12 @@ class _CityScreenState extends State<CityScreen> {
               Align(
                 alignment: Alignment.topLeft,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context,);
+                  },
                   child: const Icon(
                     Icons.arrow_back_ios,
-                    size: 50.0,
+                    size: 30.0,
                   ),
                 ),
               ),
